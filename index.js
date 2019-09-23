@@ -2,7 +2,6 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const express = require('express');
 const app = express();  // has get(),post(),put(),delete()
-app.use(express.json()); // uses json parser plugin
 const Locations = require('./location');
 const locations = new Locations();
 
@@ -14,6 +13,17 @@ const dbName = 'josdb';
 
 // Create a new MongoClient
 const client = new MongoClient(url);
+
+// NEW - Add CORS headers - see https://enable-cors.org/server_expressjs.html
+app.use(express.json(),
+    function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
 
 // Use connect method to connect to the Server
 client.connect(function(err) {
