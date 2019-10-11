@@ -5,7 +5,6 @@ const meterPerMile = 1609.34;
 
 class Locations {
     search(db,args,callback) {
-        console.log(args);
       maps.getGeometry(args.address,(geometry) => {
           findDocuments(db,geometry,args,(docs) => {  
                 callback(docs);
@@ -49,4 +48,4 @@ function findDocuments(db,geometry,args,callback) {
     })
 }
 
-  module.exports = Locations;
+module.exports = Locations;

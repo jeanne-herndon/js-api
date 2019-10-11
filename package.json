@@ -2,15 +2,24 @@
   "name": "js-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app",
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@google/maps": "^1.0.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "expect": "^24.9.0",
     "express": "^4.17.1",
     "mongodb": "^3.3.2"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "supertest": "^4.0.2"
   }
 }

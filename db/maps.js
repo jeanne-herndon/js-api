@@ -14,11 +14,14 @@ class Maps {
     getGeometry(address,callback) {
         googleMapsClient.geocode({address: address},(err,response)=>{
             if (!err) {
-                 if (typeof callback === "function") {
-                    callback(response.json.results[0].geometry)
-                }
+                callback(response.json.results[0].geometry)
+            } else {
+                console.log("err:"+err);
+                callback(null)
             }
         });
     }
 }
 module.exports = Maps;
+
+
